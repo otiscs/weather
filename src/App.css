@@ -1,0 +1,92 @@
+.App {
+  text-align: center;
+  font-family: ('Roboto', 'Segoe UI', BlinkMacSystemFont, system-ui, -apple-system);
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.approximat-btn {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  border: solid 1px;
+  border-color: rgba((0, 0, 0), 0.24);
+  padding: 0 16px;
+  border-radius: 4px;
+  height: 36px;
+  min-width: 64px;
+  vertical-align: middle;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  color: rgb(33, 150, 243);
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 34px;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+}
+
+.approximatextfield {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* Input, Textarea */
+.approximatextfield > input,
+.approximatextfield > textarea {
+  box-sizing: border-box;
+  margin: 0;
+  border-color: rgba((rgb, 0, 0, 0), 0.6);
+  border-top-color: transparent;
+  border-radius: 4px;
+  padding: 15px 13px 15px;
+  width: 100%;
+  height: inherit;
+  color: rgb((0, 0, 0), 0.87);
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  caret-color: rgb(33, 150, 243);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list > li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 1.5rem;
+  min-width: 10vmin;
+}
+
+.geoList > li {
+  padding: 0.5rem;
+}
+
+.locationlabel {
+  flex: 1;
+  text-align: left;
+  padding-left: 1rem;
+  font-size: 1rem;
+}
