@@ -32,7 +32,6 @@ function Home(props: Props) {
   return (
     <>
       <div>
-        <h1>HomePlaceholder</h1>
         <Outlet />
       </div>
     </>
