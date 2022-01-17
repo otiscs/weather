@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import styles from '../Forecasts.module.css';
+import styles from './forecast.module.css';
 
 export interface IForecast {
   name: string;
@@ -26,12 +26,16 @@ function formattedDate(dt: number) {
   } else if (date.getDate() === tomorrow.getDate()) {
     return `Tomorrow`;
   } else {
-    return `${date.getDate()}-${date.getMonth()}`;
+    return `${date.getDate()}-${date.getMonth() + 1}`;
   }
 }
 
 function formattedTemp(temp: number, unit: string) {
   return `${Math.round(temp)}°${unit}`;
+}
+
+function windDirRotate(wind_deg: number) {
+  return <div style={{ transform: `rotate(${wind_deg}deg)` }}>↑</div>;
 }
 
 function windDirection(deg: number) {
@@ -69,7 +73,10 @@ const Forecast = (props: any): ReactElement => {
         <tr />
         <tr>
           <td>
-            {wind_speed} kmh {windDirection(wind_deg)}
+            <div style={{ display: 'flex', paddingLeft: '0.1rem' }}>
+              <div style={{ paddingRight: '0.2rem' }}>{wind_speed} km/h </div>
+              {windDirRotate(wind_deg)}
+            </div>
           </td>
         </tr>
         <tr>humidity: {daily.humidity}%</tr>

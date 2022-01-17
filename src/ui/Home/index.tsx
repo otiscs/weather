@@ -10,24 +10,26 @@ function Home(props: Props) {
   const navigate = useAppNavigate();
   const [cookies, setCookie] = useCookies(['mostRecentLocation']);
 
-  let location = { city: 'London', country: 'GB', latitude: 51.5073219, longitude: 0.1276474 };
+  const defaultLocation = {
+    city: 'London',
+    country: 'GB',
+    latitude: 51.5074,
+    longitude: 0.1278,
+  };
 
   useAppEffect(() => {
-    if (cookies.mostRecentLocation) {
-      dispatch(fetchForecastAsync(cookies.mostRecentLocation));
-      navigate(`/forecast/${cookies.mostRecentLocation.city}/${cookies.mostRecentLocation.country}`);
-    } else {
-      setCookie('mostRecentLocation', location, { path: '/' });
-    }
-
     const { mostRecentLocation } = cookies;
 
-    dispatch(fetchForecastAsync(cookies.mostRecentLocation)).then(() =>
-      navigate(
-        `/forecast/${mostRecentLocation.city}/${mostRecentLocation.country}/${mostRecentLocation.latitude}/${mostRecentLocation.longitude}`
-      )
-    );
-  }, [dispatch, cookies, location]);
+    if (mostRecentLocation === undefined) {
+      setCookie('mostRecentLocation', defaultLocation, { path: '/' });
+    }
+    if (mostRecentLocation !== undefined) {
+      const { city, country, latitude, longitude } = mostRecentLocation;
+      dispatch(fetchForecastAsync(mostRecentLocation)).then(() => {
+        navigate(`/forecast/${city}/${country}/${latitude}/${longitude}`);
+      });
+    }
+  }, [dispatch, cookies, navigate]);
 
   return (
     <>
